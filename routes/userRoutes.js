@@ -7,4 +7,22 @@ const router = Router();
 
 // TODO: Implement route controllers for user
 
+// GET / api / users
+
+// GET / api / users /: id
+
+// POST / api / users
+router.post('/', function (req, res, next) {
+  res.body = req.body;
+  next();
+},
+  createUserValid,
+  responseMiddleware
+);
+
+// PUT / api / users /: id
+
+// DELETE / api / users /: id
+
+
 module.exports = router;
