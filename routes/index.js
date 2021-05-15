@@ -1,5 +1,6 @@
-const userRoutes = require('./userRoutes');
+
 const authRoutes = require('./authRoutes');
+const userRoutes = require('./userRoutes');
 const fighterRoutes = require('./fighterRoutes');
 const fightRoutes = require('./fightRoutes');
 
