@@ -12,12 +12,9 @@ const router = Router();
 // GET / api / users /: id
 
 // POST / api / users
-router.post('/', function (req, res, next) {
-  res.body = req.body;
-  next();
-},
-  createUserValid,
-  responseMiddleware
+router.post('/', 
+createUserValid,
+responseMiddleware
 );
 
 // PUT / api / users /: id
