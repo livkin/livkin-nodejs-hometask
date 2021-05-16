@@ -1,4 +1,6 @@
 const { fighter } = require('../models/fighter');
+const validations = require('../utils/validators');
+const errors = require('../utils/Errors');
 
 const createFighterValid = (req, res, next) => {
     // TODO: Implement validatior for fighter entity during creation

@@ -12,7 +12,7 @@ function getFighterById(req, res, next) {
 };
 
 function getFightersAll(req, res, next) {
-  try {
+  try { 
     res.body = fighterService.getAll(); 
   } catch {
     throw new errors.CommonError('can\'t get all fighters');

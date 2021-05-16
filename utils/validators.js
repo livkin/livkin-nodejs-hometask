@@ -16,7 +16,7 @@ function checkHaveOddKeys(body, model) {
       userKeys.indexOf(item) < 0
   });
 
-  return oddKeys ? 'odd user fields' : '';
+  return oddKeys ? 'odd fields' : '';
 }
 
 function checkHaveMissingKeys(body, model) {

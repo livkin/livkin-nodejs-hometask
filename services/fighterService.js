@@ -42,6 +42,6 @@ class FighterService {
         return item;
     }
 }
-}
+
 
 module.exports = new FighterService();

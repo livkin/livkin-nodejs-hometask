@@ -10,7 +10,7 @@ const router = Router();
 
 // GET / api / fighters
 router.get('/',
-  fighterManagerMiddleware.getFighterAll
+  fighterManagerMiddleware.getFightersAll
 );
 // GET / api / fighters /: id
 router.get('/:id',
