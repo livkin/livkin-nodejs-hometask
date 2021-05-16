@@ -1,8 +1,8 @@
-import {} from './response.middleware';
+// import {} from './response.middleware';
 
 const errorHandlingMiddleware = (err, req, res, next) => {
   
   next();
 }
 
-exports.responseMiddleware = responseMiddleware;
+exports.errorHandlingMiddleware = errorHandlingMiddleware;
