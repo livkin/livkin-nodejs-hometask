@@ -8,18 +8,18 @@ const router = Router();
 
 // TODO: Implement route controllers for fighter
 
-// GET / api / users
+// GET / api / fighters
 router.get('/',
-  userManagerMiddleware.getUsersAll  
+  fighterManagerMiddleware.getfighterAll
 );
-// GET / api / users /: id
+// GET / api / fighters /: id
 router.get('/:id',
-  userManagerMiddleware.getUserById  
+  fighterManagerMiddleware.getfighterById
 );
-// POST / api / users
+// POST / api / fighters
 router.post('/',
-  createUserValid,
-  userManagerMiddleware.createUser
+  createfighterValid,
+  fighterManagerMiddleware.createfighter
 );
 
 // PUT / api / users /: id
