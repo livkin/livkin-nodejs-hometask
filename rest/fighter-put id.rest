@@ -1,0 +1,13 @@
+PUT http://localhost:3050/api/fighters/e4018a10-18b8-43df-b18e-8671c70622ee
+content-type: application/json
+
+{
+  "power": 99
+}
+
+# {
+  # "name": "r-Zion ",
+  # "health": 111,
+  # "power": 6,
+  # "defense": 2
+# }

@@ -1,0 +1,11 @@
+
+POST http://localhost:3050/api/users
+content-type: application/json
+
+{
+  "firstName": "Tsrif",
+  "lastName": "Tsal",
+  "email": "tsrif.tsal@gmail.com",
+  "phoneNumber": "+380987654321",
+  "password": "123"
+}

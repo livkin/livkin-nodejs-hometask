@@ -1,0 +1,10 @@
+
+POST http://localhost:3050/api/fighters
+content-type: application/json
+
+{
+  "name": "Boko-oko",
+  "health": 100,
+  "power": 3,
+  "defense": 1
+}

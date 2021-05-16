@@ -1,0 +1,7 @@
+POST http://localhost:3050/api/auth
+content-type: application/json
+
+{
+  "email": "tsrif.tsal@gmail.com",
+  "password": "123"
+}

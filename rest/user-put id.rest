@@ -1,0 +1,14 @@
+PUT http://localhost:3050/api/users/458804ac-14c4-48dd-a62b-a89428326d2c
+content-type: application/json
+
+{
+  "firstName": "New.New.First"
+}
+
+# {
+#   "firstName": "New.First",
+#   "lastName": "Last",
+#   "email": "new.first.last@gmail.com",
+#   "phoneNumber": "+380123456789",
+#   "password": "321"
+# }
