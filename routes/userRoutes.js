@@ -1,6 +1,6 @@
 const { Router } = require('express');
 // const UserService = require('../services/userService');
-const userManagerMiddleware = require('../middlewares/user.manager.middleware ');
+const userManagerMiddleware = require('../middlewares/user.manager.middleware');
 const { createUserValid, updateUserValid } = require('../middlewares/user.validation.middleware');
 // const { responseMiddleware } = require('../middlewares/response.middleware');
 

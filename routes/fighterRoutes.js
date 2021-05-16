@@ -10,27 +10,27 @@ const router = Router();
 
 // GET / api / fighters
 router.get('/',
-  fighterManagerMiddleware.getfighterAll
+  fighterManagerMiddleware.getFighterAll
 );
 // GET / api / fighters /: id
 router.get('/:id',
-  fighterManagerMiddleware.getfighterById
+  fighterManagerMiddleware.getFighterById
 );
 // POST / api / fighters
 router.post('/',
-  createfighterValid,
-  fighterManagerMiddleware.createfighter
+  createFighterValid,
+  fighterManagerMiddleware.createFighter
 );
 
 // PUT / api / users /: id
 router.put('/:id',
-  updateUserValid,
-  userManagerMiddleware.updateUser
+  updateFighterValid,
+  fighterManagerMiddleware.updateFighter
 );
 
 // DELETE / api / users /: id
 router.delete('/:id',
-  userManagerMiddleware.deleteUser
+  fighterManagerMiddleware.deleteFighter
 );
 
 module.exports = router;

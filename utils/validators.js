@@ -46,9 +46,28 @@ function checkPhoneNumber(phoneNumber) {
   return '';
 }
 
-function checkPassword(password, err) {
+function checkPassword(password) {
    return password.length < 3 ? 'password length must be greater than 3' : '';
 }
+
+// power - число, 1 < power < 100
+function checkPower(power) {
+  return power < 1 || power > 100 ? '1 < power < 100' : '';
+}
+
+// defense - число, 1 < defense < 10
+function checkDefense(defense) {
+  return defense < 1 || defense > 10 ? '1 < defense < 10' : '';
+}
+
+// health - число, 80 < health < 120, необов'язкове поле(за замовчуванням - 100)
+function checkHealth(health) {
+  return health < 80 || health > 120 ? '80 < health < 120' : '';
+}
+
+exports.checkDefense = checkDefense;
+exports.checkPower = checkPower;
+exports.checkHealth = checkHealth;
 
 exports.haveId = checkNoId;
 exports.haveOddKeys = checkHaveOddKeys;
