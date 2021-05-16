@@ -1,40 +1,50 @@
 const { user } = require('../models/user');
 const validations = require('../utils/validators');
+const errors = require('../utils/Errors');
 
 const createUserValid = (req, res, next) => {
-    res.err = {
-        error: false,
-        message: '',
-        status: 400,
-    };
-    const err = res.err;
+    const messages = [];
 
-    validations.haveId(req.body, err);
-    validations.haveOddKeys(req.body, user, err);
-    validations.haveMissingKeys(req.body, user, err);
+    messages.push(validations.haveId(req.body));
 
-    if (req.body.email === undefined) {
-        validations.checkEmail(req.body.email, res.err);
-    }
-    if (req.body.phoneNumber === undefined) {
-        validations.checkPhoneNumber(req.body.phoneNumber, res.err);
-    }
-    if (req.body.checkPassword === undefined) {
-        validations.checkPassword(req.body.password, res.err);
-    }
-    if (err.error) {
-        res.err = err;
-    }
+    messages.push(validations.haveOddKeys(req.body, user));
+    messages.push(validations.haveMissingKeys(req.body, user));
 
+    messages.push(validations.checkEmail(req.body.email));
+    messages.push(validations.checkPhoneNumber(req.body.phoneNumber));
+    messages.push(validations.checkPassword(req.body.password));
+
+    const message = messages.join('\n').trim();
+    if (message !== '') {
+        throw new errors.CommonError(message);
+    }
+    
     next();
 }
 
 const updateUserValid = (req, res, next) => {
     // TODO: Implement validatior for user entity during update
+    const messages = [];
+    
+    messages.push(validations.haveOddKeys(req.body, user));
+
+    if (req.body.email !== undefined) {
+        messages.push(validations.checkEmail(req.body.email));
+    }
+    if (req.body.phoneNumber !== undefined) {
+        messages.push(validations.checkPhoneNumber(req.body.phoneNumber));
+    }
+    if (req.body.password !== undefined) {
+        messages.push(validations.checkPassword(req.body.password));
+    }
+
+    const message = messages.join('\n').trim();
+    if (message !== '') {
+        throw new errors.CommonError(message);
+    }
 
     next();
 }
-
 
 exports.createUserValid = createUserValid;
 exports.updateUserValid = updateUserValid;

@@ -18,6 +18,15 @@ class UserService {
         }
         return item;
     }
+
+    update(id, data) {
+        const item  = UserRepository.getOne({id});
+        if(!item) {
+            return null;
+        }
+        return UserRepository.update(id, data);
+
+    }
 }
 
 module.exports = new UserService();

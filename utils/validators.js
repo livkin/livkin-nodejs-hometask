@@ -1,96 +1,58 @@
 
-function checkNoId(body, err) {
-
+function checkNoId(body) {
   const bodyKeys = Object.keys(body);
+  const haveId = bodyKeys.some(item => item === 'id');
 
-  const haveId = bodyKeys.some(item => {
-      return item === 'id';
-  });
-
-  if (haveId) {
-      err.error = true;
-      err.message += 'odd user field: id; ';
-  
-      return false;
-  };
-
-  return true;
-
+  return haveId ? 'odd user field: id' : '';
 }
 
-function checkHaveOddKeys(body, model, err) {
-
+function checkHaveOddKeys(body, model) {
   const userKeys = Object.keys(model);
   const bodyKeys = Object.keys(body);
 
   const oddKeys = bodyKeys.some(item => {
-      return item === 'id'
-          ||
-          userKeys.indexOf(item) < 0
+    return item === 'id'
+      ||
+      userKeys.indexOf(item) < 0
   });
 
-  if (oddKeys) {
-      err.error = true;
-      err.message += 'odd user fields; ';
+  return oddKeys ? 'odd user fields' : '';
+}
 
-      return false;
-  };
-
-  return true;    
-
-} 
-
-function checkHaveMissingKeys(body, model, err) {
-  
+function checkHaveMissingKeys(body, model) {
   const userKeys = Object.keys(model);
   const bodyKeys = Object.keys(body);
 
   const missingKeys = userKeys.some(item => {
-      return item !== 'id'
-          &&
-          bodyKeys.indexOf(item) < 0
+    return item !== 'id'
+      &&
+      bodyKeys.indexOf(item) < 0
   })
 
-  if (missingKeys) {
-      err.error = true;
-      err.message += 'missing user fields; ';
-      return false;
-  };
-
-  return true;
+  return missingKeys ? 'missing user fields' : '';
 }
 
-function checkEmail(email, err){
-  
-  if (!email.endsWith('@gmail.com')) {
-    err.error = true;
-    err.message += 'email must be gmail.com; ';
-    return false;
-  }
+function checkEmail(email) {
+  const isGmail = email.endsWith('@gmail.com');
 
-  return true;
+  return !isGmail ? 'email must be gmail.com' : '';
 }
 
-function checkPhoneNumber(phoneNumber, err) {
-// phoneNumber: +380xxxxxxxxx
-  if(!phoneNumber.startsWith('+380') || phoneNumber.length != 13) {
-    err.error = true;
-    err.message += 'wrong phonenumber format; ';
-    return false;
+function checkPhoneNumber(phoneNumber) {
+  // phoneNumber: +380xxxxxxxxx
+  if (!phoneNumber.startsWith('+380') || phoneNumber.length != 13) {
+    return 'wrong phonenumber format';
   }
+  return '';
 }
 
 function checkPassword(password, err) {
-  if(password.length < 3) {
-    err.error = true;
-    err.message += 'password length must be greater than 3; ';
-    return false;
-  }
+   return password.length < 3 ? 'password length must be greater than 3' : '';
 }
 
 exports.haveId = checkNoId;
 exports.haveOddKeys = checkHaveOddKeys;
-exports.haveMissingKeys = checkHaveMissingKeys;  
+exports.haveMissingKeys = checkHaveMissingKeys;
 exports.checkEmail = checkEmail;
-exports.checkphoneNumber = checkPhoneNumber;
+exports.checkPhoneNumber = checkPhoneNumber;
 exports.checkPassword = checkPassword;
